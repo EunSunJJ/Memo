@@ -18,6 +18,8 @@ public class UserService {
 			, String name
 			, String email) {
 		
+		// 비밀번호 암호화
+		
 		User user = User.builder()
 					.loginId(loginId)
 					.password(password)
