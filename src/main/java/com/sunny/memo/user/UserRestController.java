@@ -69,6 +69,7 @@ public class UserRestController {
 		
 		User user = userService.addUser(loginId, password, name, email);
 		
+		// response
 		Map<String, String> resultMap = new HashMap<>();
 		if (user != null) {
 			resultMap.put("result", "success");

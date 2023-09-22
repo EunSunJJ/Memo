@@ -16,7 +16,33 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section>
+		<section class="bg-success contens d-flex justify-content-center">
+			<div class="post-layout">
+				<h1>메모 리스트</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<td>No.</td>
+							<td>제목</td>
+							<td>날짜</td>
+						</tr>
+					</thead>
+					<tbody>
+						
+						<c:forEacn var="post" items="${postList}">
+						<tr>
+							<td>${post.id}</td>
+							<td>${post.title}</td>
+							<td>${post.createdAt}</td>
+						</tr>
+						</c:forEacn>
+					</tbody>
+				</table>
+				
+				<div class="d-flex justify-content-end">
+					<a href="/post/create-view" class="btn btn-secondary">글 쓰기</a>
+				</div>
+			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
