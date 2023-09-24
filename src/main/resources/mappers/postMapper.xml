@@ -24,7 +24,8 @@
   			
   	</insert>
   	
-  	<select id="selectoPostList" resultType="com.sunny.memo.post.domain.Post">
+  	<select id="selectoPostList" parameterType="int"
+  	resultType="com.sunny.memo.post.domain.Post">
   		SELECT
   			`id`
 			, `userId`
@@ -36,7 +37,8 @@
 		FROM
 			`post`
 		WHERE
-			조건추가하기
+			`userId` = #{userId}
+		
 		ORDER BY
 			`id` DESC
   			

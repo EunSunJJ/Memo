@@ -48,14 +48,12 @@ public class UserRestController {
 			
 			resultMap.put("result", "success");
 		} else {
+			
 			resultMap.put("result", "fail");			
 		}
 		
 		return resultMap;
 	}
-	
-	
-	
 	
 	
 	

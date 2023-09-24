@@ -14,6 +14,13 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
+	// 메모 리스트
+	public List<Post> getPostList(int userId) {
+		
+		return postRepository.selectPostList(userId);
+		 
+	}
+	
 	// 메모 글 쓰기
 	public int addPost(int userId, String title, String content) {
 		
@@ -21,10 +28,4 @@ public class PostService {
 		
 	}
 	
-	// 메모 리스트
-	public List<Post> getPostList() {
-		
-		List<Post> postList = postRepository.selectPostList();
-		return postList;
-	}
 }

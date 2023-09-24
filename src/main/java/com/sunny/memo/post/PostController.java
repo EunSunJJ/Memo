@@ -30,8 +30,8 @@ public class PostController {
 		
 		int userId = (Integer) session.getAttribute("userId");
 		
-		List<Post> postList = postService.getPostList();
-		model.addAttribute(postList);
+		List<Post> postList = postService.getPostList(userId);
+		model.addAttribute("postList", postList);
 				
 		return "post/list";
 	}
