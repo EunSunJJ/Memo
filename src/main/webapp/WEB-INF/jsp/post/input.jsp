@@ -25,7 +25,7 @@
 					<input type="text" class="form-control" id="titleInput">
 				</div>
 				<textarea class="form-control" rows="7" id="contentInput"></textarea>
-				<input type="file" class="my-2" id="imagerInput">
+				<input type="file" class="my-2" id="fileInput">
 				
 				<div class="d-flex justify-content-between">
 					<a href="/post/list-view" class="btn btn-secondary">목록으로</a>
@@ -49,6 +49,8 @@ $(document).ready(function(){
 		let title = $("#titleInput").val();
 		let content = $("#contentInput").val();
 		
+		let file = $("#fileInput")[0];
+		
 		if (title == "") {
 			alert("제목을 입력하세요");
 			return;
@@ -59,10 +61,19 @@ $(document).ready(function(){
 			return;
 		}
 		
+		// let file = $("#fileInput")[0]; 사용법
+		let formData = new FormData();
+		formData.append("title", title);
+		formData.append("content", content);
+		formData.append("imageFile", file.files[0]);
+		
 		$.ajax({
 			type:"post"
 			, url:"/post/create"
-			, data:{"title":title, "content":content}
+			, data:formData
+			, enctype:"multipart/form-data"  // 파일 업로드 필수 옵션
+			, processData:false  // 파일 업로드 필수 옵션
+			, contentType:false  // 파일 업로드 필수 옵션
 			, success:function(data){
 				if (data.result == "success") {
 					alert("메모 작성 성공");

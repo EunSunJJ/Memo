@@ -16,8 +16,8 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="contents d-flex justify-content-center align-items-center">
-			<div class="input-box">
+		<section class="contents d-flex justify-content-center align-items-center mt-4">
+			<div class="input-box mb-4">
 				<input type="text" placeholder="아이디를 입력하세요" class="form-control mb-3" id="loginIdInput">
 				<input type="password" placeholder="비밀번호를 입력하세요" class="form-control mb-3" id="passwordInput">
 				<button type="button" class="btn btn-secondary form-control mb-3" id="loginBtn">로그인</button>
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			alert("비밀번호를 입력하세요");
 			return;
 		}
-		
+	
 		$.ajax({
 			type:"post"
 			, url:"/user/login"

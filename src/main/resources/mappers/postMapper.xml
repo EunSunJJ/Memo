@@ -13,6 +13,7 @@
   				`userId`
   				, `title`
 				, `content` 
+				, `imagePath`
   			)
   			
   			VALUE
@@ -20,11 +21,12 @@
   				#{userId}
   				, #{title}
   				, #{content}
+  				, #{imagePath}
   			)
   			
   	</insert>
   	
-  	<select id="selectoPostList" parameterType="int"
+  	<select id="selectPostList" parameterType="int"
   	resultType="com.sunny.memo.post.domain.Post">
   		SELECT
   			`id`
@@ -43,5 +45,21 @@
 			`id` DESC
   			
   	
+  	</select>
+  	
+  	<select id="selectPost" parameterType="int" resultType="com.sunny.memo.post.domain.Post">
+  		
+  		SELECT
+  			`id`
+			, `userId`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`id` = #{id}
   	</select>
   </mapper>

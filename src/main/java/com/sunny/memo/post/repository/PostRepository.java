@@ -10,6 +10,8 @@ import com.sunny.memo.post.domain.Post;
 @Repository
 public interface PostRepository {
 	
+	// 메모 상세 페이지
+	public Post selectPost(@Param("id") int id);
 	
 	// 메모 리스트
 	public List<Post> selectPostList(int userId);
@@ -19,5 +21,6 @@ public interface PostRepository {
 	public int insertPost(
 			@Param("userId") int userId
 			, @Param("title") String title
-			, @Param("content") String content);
+			, @Param("content") String content
+			, @Param("imagePath") String imagePath);
 }
