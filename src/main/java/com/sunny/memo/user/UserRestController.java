@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sunny.memo.service.UserService;
 import com.sunny.memo.user.domain.User;
+import com.sunny.memo.user.service.UserService;
 
 // API 를 만들기 위한 Controller
 @RestController // @Controller + @ResponseBody

@@ -1,4 +1,4 @@
-package com.sunny.memo.repository;
+package com.sunny.memo.user.repository;
 
 import java.util.Optional;
 
