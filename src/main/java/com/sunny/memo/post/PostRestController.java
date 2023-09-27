@@ -22,6 +22,9 @@ public class PostRestController {
 	private PostService postService;
 	
 
+	// 메모 삭제하기
+	// 메모 수정하기
+	
 	// 메모 글쓰기
 	@PostMapping("/create")
 	public Map<String, String> createMemo(

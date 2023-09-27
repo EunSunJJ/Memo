@@ -23,6 +23,7 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	
 	// 메모 상세 페이지
 	@GetMapping("/detail-view")
 	public String postDetail(
