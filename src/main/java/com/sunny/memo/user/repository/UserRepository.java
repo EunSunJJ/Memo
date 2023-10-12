@@ -10,6 +10,7 @@ import com.sunny.memo.user.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	// 로그인
 	// WHERE `loginId` = ?? AND `password` == ??;
 	public Optional<User> findByLoginIdAndPassword(String loginId, String password); 
 }

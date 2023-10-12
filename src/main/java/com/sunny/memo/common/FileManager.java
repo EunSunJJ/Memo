@@ -19,6 +19,7 @@ public class FileManager {
 	
 	public static String saveFile(int userId , MultipartFile file) {
 	
+		// 이미지 파일 저장하기
 		if (file == null) {
 			return null;
 		}
@@ -73,4 +74,52 @@ public class FileManager {
 		
 		return "/images" + directoryName + "/" + file.getOriginalFilename();
 	}
+	
+	// 이미지 파일 삭제하기 + 마지막에 static으로 바꿔줌
+	public static boolean removeFiles(String filePath) {  //  /images/2_328973298/test.png
+		
+		// 이미지파일이 없는 것 삭제할 떄 에러나서 null처리
+		if(filePath == null) {
+			return false;
+		}
+		
+		// 이미지 파일 경로에서 /images 제거 후
+		// filePath.replace("/images", "");  //  /2_328973298/test.png
+		
+		// upload 경로를 이어 붙여 준다.
+		String fullFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", ""); 
+		
+		// 사용법
+		Path path = Paths.get(fullFilePath);
+		
+		// 삭제할 파일이 존재하는지 확인하고 삭제
+		// Files.exists(path) -> true false return
+		if (Files.exists(path)) {
+		
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+				return false;
+			}
+		}
+		
+		// 저장된 파일의 폴더 = 디렉토리도 삭제
+		Path dirPath = path.getParent(); // 새로운 경로를 리턴 = 디렉토리 경로
+		
+		// 디렉토리가 존재하는지 확인하고 삭제
+		if (Files.exists(dirPath)) {
+			try {
+				Files.delete(dirPath);
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 }

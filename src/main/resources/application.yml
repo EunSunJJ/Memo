@@ -1,4 +1,15 @@
 spring:
+  mail:
+    host: smtp.naaver.com
+    port: 465
+    username: developtest0122@naver.com
+    password: DEVELOPtest0724@
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttles:
+            enable: true
   jpa:
     show-sql: true
     hibernate:

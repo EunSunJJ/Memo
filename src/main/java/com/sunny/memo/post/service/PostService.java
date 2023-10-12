@@ -16,6 +16,22 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepository;
 	
+	// 메모 삭제하기
+	public int deletePost(int postId) {
+		
+		// postId를 기반으로 게시글의 정보를 얻어오기
+		Post post = postRepository.selectPost(postId);
+		
+		// 이미지도 같이 삭제하기 -> 테이블에 저장 된 경로를 알면 삭제가능
+		FileManager.removeFiles(post.getImagePath());
+			
+		return postRepository.deletePost(postId);
+	}
+	
+	// 메모 수정하기
+	public int updatePost(int postId, String title, String content) {
+		return postRepository.updatePost(postId, title, content);
+	}
 	// 메모 상세 페이지
 	public Post getPost(int id) {
 		// 한 행은 Entity class 여러행은 List

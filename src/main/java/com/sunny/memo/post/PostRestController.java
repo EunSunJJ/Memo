@@ -6,7 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +23,42 @@ public class PostRestController {
 	@Autowired
 	private PostService postService;
 	
-
 	// 메모 삭제하기
+	@DeleteMapping("/delete")
+	public Map<String, String> deletePost(@RequestParam("postId") int postId){
+		
+		int count = postService.deletePost(postId);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 	// 메모 수정하기
+	@PutMapping("/update")
+	public Map<String, String> updatePost(
+			@RequestParam("postId") int postId
+			, @RequestParam("title") String title
+			, @RequestParam("content") String content){
+	
+		int count = postService.updatePost(postId, title, content);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
 	
 	// 메모 글쓰기
 	@PostMapping("/create")
