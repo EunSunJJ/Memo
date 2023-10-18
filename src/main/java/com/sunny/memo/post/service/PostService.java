@@ -32,6 +32,7 @@ public class PostService {
 	public int updatePost(int postId, String title, String content) {
 		return postRepository.updatePost(postId, title, content);
 	}
+	
 	// 메모 상세 페이지
 	public Post getPost(int id) {
 		// 한 행은 Entity class 여러행은 List
